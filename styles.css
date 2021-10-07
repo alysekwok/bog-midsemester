@@ -4,6 +4,38 @@ body {
     background-color: rgb(207, 21, 21);
 }
 
+a {
+    text-decoration: none;
+    display: inline-block;
+    position: bottom;
+    padding: 8px 16px;
+}
+
+.left-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+  
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+  
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+  
+.next {
+    background-color: #04AA6D;
+    color: white;
+}
+  
+.round {
+    border-radius: 50%;
+}
+
 #pokemon-logo {
     height: 30%;
     width: 30%;
