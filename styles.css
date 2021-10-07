@@ -12,9 +12,6 @@ body {
     margin-right: auto;
 }
 
-hr.solid {
-    border: 2px solid black;
-  }
 
 #search-bar {
     height: 34px;

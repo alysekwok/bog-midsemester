@@ -18,6 +18,38 @@ async function getPokemon(name) {
     const img = document.createElement("img")
     img.src = imglink
     img.width = 300
-    searchContainer.appendChild(img)
+    if (searchContainer.hasChildNodes()) {
+        searchContainer.removeChild(searchContainer.previousSibling)
+        searchContainer.appendChild(img)
+    } else {
+        searchContainer.appendChild(img)
+    }
+    
 }
 
+const textContainer = document.getElementById("pokeText")
+const infoButton = document.getElementById("info")
+
+infoButton.addEventListener('click', (e) => {
+    getInfo(searchValue.value)
+})
+
+async function getInfo(name) {
+    const res = await fetch(URL + name)
+    const pokemon = await res.json()
+ 
+    const text = document.createElement("p")
+    text.innerText = pokemon.height
+    textContainer.replaceChild(text)
+}
+
+
+
+/*
+function renderPokemon(pokeData) {
+    letpokeContainer = document.createElement("div")
+    let pokeNumber = document.createElement('p')
+    pokeNumber.innerText = 
+
+}
+*/
