@@ -18,13 +18,13 @@ async function getPokemon(name) {
     const img = document.createElement("img")
     img.src = imglink
     img.width = 300
-    if (searchContainer.hasChildNodes()) {
-        searchContainer.removeChild(searchContainer.previousSibling)
+    searchContainer.appendChild(img)
+    console.log(searchContainer.childNodes)
+    if (searchContainer.hasChildElementCount == 1) {
         searchContainer.appendChild(img)
     } else {
-        searchContainer.appendChild(img)
+        searchContainer.replaceChild(img, searchContainer.childNodes[1])
     }
-    
 }
 
 const textContainer = document.getElementById("pokeText")
