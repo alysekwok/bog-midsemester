@@ -1,3 +1,4 @@
+
 const URL = "https://pokeapi.co/api/v2/pokemon/"
 
 //use async function
@@ -37,19 +38,13 @@ infoButton.addEventListener('click', (e) => {
 async function getInfo(name) {
     const res = await fetch(URL + name)
     const pokemon = await res.json()
- 
-    const text = document.createElement("p")
-    text.innerText = pokemon.height
-    textContainer.replaceChild(text)
+    const height = pokemon.height
+    const weight = pokemon.weight
+    const stats = pokemon.stats
+    
+    textContainer.innerHTML = "height:" + height
+    textContainer.innerHTML = "weight:" + weight
+    // textContainer.innerHTML = "stats:" + stats
 }
 
 
-
-/*
-function renderPokemon(pokeData) {
-    letpokeContainer = document.createElement("div")
-    let pokeNumber = document.createElement('p')
-    pokeNumber.innerText = 
-
-}
-*/
