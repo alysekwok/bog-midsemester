@@ -16,6 +16,12 @@ a {
     flex-direction: column;
     gap: 100px;
 }
+
+.right-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
   
 a:hover {
     background-color: #ddd;
