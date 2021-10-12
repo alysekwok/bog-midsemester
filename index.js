@@ -94,4 +94,31 @@ async function getInfo(name) {
     //textContainer.innerHTML += "stats:" + stats
 }
 
+const movesbutton=document.getElementById("moves")
 
+movesbutton.addEventListener('click', (e) => {
+    getmoves(searchValue.value)
+})
+
+async function getmoves(name) {
+    const res = await fetch(URL + name)
+    const pokemon = await res.json()
+    const skill = pokemon.moves
+    
+    textContainer.innerHTML = skill
+
+}
+
+const locationbutton=document.getElementById("location")
+locationbutton.addEventListener('click', (e) => {
+    getloc(searchValue.value)
+})
+
+async function getloc(name) {
+    const res = await fetch(URL + name)
+    const pokemon = await res.json()
+    const place = pokemon.held_items.location_area_encounters
+    
+    textContainer.innerHTML = place
+
+}
