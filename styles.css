@@ -12,6 +12,11 @@ body {
     margin-right: auto;
 }
 
+#blac{
+    margin:0%;
+    padding:0;
+}
+
 
 #search-bar {
     height: 34px;
