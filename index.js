@@ -104,8 +104,12 @@ async function getmoves(name) {
     const res = await fetch(URL + name)
     const pokemon = await res.json()
     const skill = pokemon.moves
-    
-    textContainer.innerHTML = skill
+    textContainer.innerHTML = "Moves: " + "<br>"
+    for (let i in skill) {
+        textContainer.innerHTML += JSON.stringify(skill[i]["move"]["name"]) + "<br>"
+    }
+    // textContainer.innerHTML = JSON.stringify(skill)
+
 
 }
 
