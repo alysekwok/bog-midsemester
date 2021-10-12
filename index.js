@@ -34,7 +34,6 @@ async function getPokemon(name) {
     img.src = imglink
     img.width = 300
     searchContainer.appendChild(img)
-    console.log(searchContainer.childNodes)
     if (searchContainer.hasChildElementCount == 1) {
         searchContainer.appendChild(img)
     } else {
@@ -83,8 +82,7 @@ async function getInfo(name) {
     const weight = pokemon.weight
     const stats = pokemon.stats
     
-    textContainer.innerHTML = "height:" + height
-    textContainer.innerHTML = "Weight: " + weight
+    textContainer.innerHTML = "Height: " + height + "<br>" + "Weight: " + weight
     // textContainer.innerHTML = "stats:" + stats
 }
 
