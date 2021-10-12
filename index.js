@@ -43,7 +43,7 @@ async function getInfo(name) {
     const stats = pokemon.stats
     
     textContainer.innerHTML = "height:" + height
-    textContainer.innerHTML = "weight:" + weight
+    textContainer.innerHTML = "Weight: " + weight
     // textContainer.innerHTML = "stats:" + stats
 }
 
