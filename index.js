@@ -1,5 +1,6 @@
 
 const URL = "https://pokeapi.co/api/v2/pokemon/"
+const statURL = "https://pokeapi.co/api/v2/stat/"
 let id
 
 //use async function
@@ -77,13 +78,20 @@ async function getNext(pokeid) {
 
 async function getInfo(name) {
     const res = await fetch(URL + name)
+    // const statRes = await fetch(statURL + name)
     const pokemon = await res.json()
+    // const stat = await statRes.json()
     const height = pokemon.height
     const weight = pokemon.weight
     const stats = pokemon.stats
     
-    textContainer.innerHTML = "Height: " + height + "<br>" + "Weight: " + weight
-    // textContainer.innerHTML = "stats:" + stats
+    
+    textContainer.innerHTML = "Height: " + height + "<br>" + "Weight: " + weight + "<br>" + "Stats: " 
+     for (let i = 0; i < 6; i++) {
+        textContainer.innerHTML += JSON.stringify(stats[i]["stat"]["name"]) + ": " + JSON.stringify(stats[i]["base_stat"]) + "<br>"
+    }
+    
+    //textContainer.innerHTML += "stats:" + stats
 }
 
 
