@@ -8,7 +8,7 @@ let id
 const searchContainer = document.getElementById("search_image")
 const searchValue = document.getElementById("search-bar")
 const movesButton = document.getElementById("moves")
-const typeBar = document.getElementById('type')
+const typeBar = document.getElementById("type-text")
 
 searchValue.addEventListener('keypress', (e) => {
     if (e.key === 'Enter')
@@ -45,7 +45,7 @@ async function getPokemon(name) {
         const types = pokemon.types
         typeBar.innerHTML = "Types: " + "<br>"
         for (let i in types) {
-            textContainer.innerHTML += JSON.stringify(types[i]["type"]["name"]) + "<br>"
+            typeBar.innerHTML += JSON.stringify(types[i]["type"]["name"]) + "<br>"
         }
         getInfo(id)
     } catch (e) {

@@ -106,6 +106,18 @@ button {
     font-family: monaco, Consolas, "Lucida Console", monospace;
 }
 
+#type-text {
+    display: block;
+    background-color: lightyellow;
+    width: 200px;
+    height: 75px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 10px;
+    overflow: auto;
+
+}
+
 #pokeText {
     display: block;
     background-color: lightyellow;
