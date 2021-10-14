@@ -147,7 +147,10 @@ async function getloc(name) {
     const res = await fetch(URL + name)
     const pokemon = await res.json()
     const place = pokemon.location_area_encounters
-    
-    textContainer.innerHTML = place
-
+    const resLoc = await fetch(place)
+    const encounterLocation = await resLoc.json()
+    textContainer.innerHTML = "Locations: " + "<br>"
+    for (let i in encounterLocation) {
+        textContainer.innerHTML += JSON.stringify(encounterLocation[i]["location_area"]["name"]) + "<br>"
+    }
 }
