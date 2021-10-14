@@ -8,6 +8,7 @@ let id
 const searchContainer = document.getElementById("search_image")
 const searchValue = document.getElementById("search-bar")
 const movesButton = document.getElementById("moves")
+const typeBar = document.getElementById('type')
 
 searchValue.addEventListener('keypress', (e) => {
     if (e.key === 'Enter')
@@ -26,19 +27,39 @@ async function getMoves(name) {
 }
 
 async function getPokemon(name) {
-    const res = await fetch(URL + name)
-    const pokemon = await res.json()
-    id = pokemon.id
+    try {
+        const res = await fetch(URL + name)
+        const pokemon = await res.json()
+        id = pokemon.id
 
-    const imglink = pokemon.sprites.front_default
-    const img = document.createElement("img")
-    img.src = imglink
-    img.width = 300
-    searchContainer.appendChild(img)
-    if (searchContainer.hasChildElementCount == 1) {
+        const imglink = pokemon.sprites.front_default
+        const img = document.createElement("img")
+        img.src = imglink
+        img.width = 300
         searchContainer.appendChild(img)
-    } else {
-        searchContainer.replaceChild(img, searchContainer.childNodes[1])
+        if (searchContainer.hasChildElementCount == 1) {
+            searchContainer.appendChild(img)
+        } else {
+            searchContainer.replaceChild(img, searchContainer.childNodes[1])
+        }
+        const types = pokemon.types
+        typeBar.innerHTML = "Types: " + "<br>"
+        for (let i in types) {
+            textContainer.innerHTML += JSON.stringify(types[i]["type"]["name"]) + "<br>"
+        }
+        getInfo(id)
+    } catch (e) {
+        const img = document.createElement("img")
+        img.src="https://www.pngkit.com/png/detail/97-970996_image-of-caution-clipart-caution-sign-clip-art.png"
+        img.width = 300
+        searchContainer.appendChild(img)
+        if (searchContainer.hasChildElementCount == 1) {
+            searchContainer.appendChild(img)
+        } else {
+            searchContainer.replaceChild(img, searchContainer.childNodes[1])
+        }
+        textContainer.innerHTML = "Does not exist"
+        typeBar.innerHTML = "NO TYPE"
     }
 }
 
@@ -49,7 +70,7 @@ const prevButton = document.getElementById("previous")
 const nextButton = document.getElementById("next")
 
 infoButton.addEventListener('click', (e) => {
-    getInfo(searchValue.value)
+    getInfo(id)
 })
 
 
@@ -77,21 +98,25 @@ async function getNext(pokeid) {
 
 
 async function getInfo(name) {
-    const res = await fetch(URL + name)
-    // const statRes = await fetch(statURL + name)
-    const pokemon = await res.json()
-    // const stat = await statRes.json()
-    const height = pokemon.height
-    const weight = pokemon.weight
-    const stats = pokemon.stats
-    
-    
-    textContainer.innerHTML = "Height: " + height + "<br>" + "Weight: " + weight + "<br>" + "Stats: " 
-     for (let i = 0; i < 6; i++) {
-        textContainer.innerHTML += JSON.stringify(stats[i]["stat"]["name"]) + ": " + JSON.stringify(stats[i]["base_stat"]) + "<br>"
+    try {
+        const res = await fetch(URL + name)
+        // const statRes = await fetch(statURL + name)
+        const pokemon = await res.json()
+        // const stat = await statRes.json()
+        const height = pokemon.height
+        const weight = pokemon.weight
+        const stats = pokemon.stats
+        
+        
+        textContainer.innerHTML = "Height: " + height + "<br>" + "Weight: " + weight + "<br>" + "Stats: " 
+        for (let i = 0; i < 6; i++) {
+            textContainer.innerHTML += JSON.stringify(stats[i]["stat"]["name"]) + ": " + JSON.stringify(stats[i]["base_stat"]) + "<br>"
+        }
+        
+        //textContainer.innerHTML += "stats:" + stats
+    } catch (e) {
+        textContainer.innerHTML = "Does not exist"
     }
-    
-    //textContainer.innerHTML += "stats:" + stats
 }
 
 const movesbutton=document.getElementById("moves")
