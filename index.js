@@ -43,9 +43,9 @@ async function getPokemon(name) {
             searchContainer.replaceChild(img, searchContainer.childNodes[1])
         }
         const types = pokemon.types
-        typeBar.innerHTML = "Types: " + "<br>"
+        typeBar.innerHTML = "Types: "
         for (let i in types) {
-            typeBar.innerHTML += JSON.stringify(types[i]["type"]["name"]) + "<br>"
+            typeBar.innerHTML += JSON.stringify(types[i]["type"]["name"]) + "<br> "
         }
         getInfo(id)
     } catch (e) {
