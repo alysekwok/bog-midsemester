@@ -146,7 +146,7 @@ locationbutton.addEventListener('click', (e) => {
 async function getloc(name) {
     const res = await fetch(URL + name)
     const pokemon = await res.json()
-    const place = pokemon.held_items.location_area_encounters
+    const place = pokemon.location_area_encounters
     
     textContainer.innerHTML = place
 
