@@ -15,9 +15,7 @@ searchValue.addEventListener('keypress', (e) => {
         getPokemon(searchValue.value)
 })
 
-movesButton.addEventListener('click', (e) => {
-    getMoves(searchValue.value)
-})
+
 
 async function getMoves(name) {
     const res = await fetch(URL + name)
@@ -122,7 +120,7 @@ async function getInfo(name) {
 const movesbutton=document.getElementById("moves")
 
 movesbutton.addEventListener('click', (e) => {
-    getmoves(searchValue.value)
+    getmoves(id)
 })
 
 async function getmoves(name) {
@@ -140,7 +138,7 @@ async function getmoves(name) {
 
 const locationbutton=document.getElementById("location")
 locationbutton.addEventListener('click', (e) => {
-    getloc(searchValue.value)
+    getloc(id)
 })
 
 async function getloc(name) {
